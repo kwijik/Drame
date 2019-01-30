@@ -8,7 +8,10 @@
 
 using namespace cv;
 
+
 int main(){
+
+
 
 	int size_pic = 400;
 
@@ -18,7 +21,9 @@ int main(){
 
 	std::cout << "h: " << h << std::endl;
 
-		Mat image = Mat::zeros( 400, 400, CV_8UC3 );
+	int img_size = 400;
+
+	Mat image = Mat::zeros( 400, 400, CV_8UC3 );
 
 
 
@@ -26,20 +31,26 @@ int main(){
 	for (int i=0; i < 4; i++){
 		for (int j=0; j<4; j++){
 			int fig = h & 3; // 3 это 11  
-
+			Scalar sc;
  			h >>= 2; // смещаем вправо на 2 бита
 
  			int col = h & 3; // 3 это 11  
 
  			h >>= 2; // смещаем вправо на 2 бита
 
+ 			switch(col){
+ 				case 0: sc = (255, 255, 255);
+		 		case 1: sc = (0, 0, 0);
+		 		case 2: sc = (255, 0, 0);
+		 		case 3: sc = (0, 0, 255);
+ 			}
 
 
 			switch(fig){
-				case 0: circle( image, Point( 200, 200 ), 32.0, Scalar( 110, 220, 0 ), 1, 8 );
-				case 1: circle( image, Point( 200, 200 ), 32.0, Scalar( 110, 220, 0 ), 1, 8 );
-				case 2: circle( image, Point( 200, 200 ), 32.0, Scalar( 110, 220, 0 ), 1, 8 );
-				case 3: circle( image, Point( 200, 200 ), 32.0, Scalar( 110, 220, 0 ), 1, 8 );
+				case 0: circle( image, Point( 200, 200 ), 32.0, sc, 1, 8 );
+				case 1: line( image, Point( i * 100, j * 100 ), Point( i * 100 +100, j * 100 +100), sc, 1, 8 );
+				case 2: line( image, Point( i*100, j * 100 + 100 ), Point( i * 100 +100, j * 100), sc, 1, 8 );
+				case 3: line( image, Point( i*100, j * 100 + 100 ), Point( i * 100 +100, j * 100), sc, 1, 8 );
 			}
 
 		std::cout << "fig is " << fig << std::endl;
