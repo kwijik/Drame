@@ -15,6 +15,7 @@
 
 using namespace cv;
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -27,7 +28,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void generator(){
+void MainWindow::on_pushButton_3_clicked()
+{
+    std::cout << "button clicked" << std::endl;
+    QLineEdit* lineEdit = this->findChild<QLineEdit*>("lineEdit");
+    std::cout << "input " << lineEditstr.toUtf8().constData() << std::endl;
+
+}
+
+void drawTriangle(Mat image, Point p1, Point p2, Point p3, Scalar sc, int width){
+    line( image, p1, p2, sc, width, 8 );
+    line( image, p1, p3, sc, width, 8 );
+    line( image, p2, p3, sc, width, 8 );
+}
+
+QImage generator(){
 
 	const int line_width = 2; 
 
@@ -35,33 +50,33 @@ void generator(){
 
 	std::string test = "tttt";
 
-	std::size_t h = std::hash <std::string>{}(test); // hash
+	std::size_t h = std::hash <std::string>{}(test); 
 
 	std::cout << "h: " << h << std::endl;
 
 	int img_size = 400;
 
-	Mat image ( 400, 400, CV_8UC3, Scalar(255,255,0) ); // unsigned double
+	Mat image ( 400, 400, CV_8UC3, Scalar(255,255,0) ); 
 
 
 
-	int fig = h & 3; // 3 это 11  
+	int fig = h & 3; 
 	std::cout << "fig is " << fig <<  std::endl;
 
- 	h >>= 2; // смещаем вправо на 2 бита
+ 	h >>= 2; 
 	std::cout << "h is " << h <<  std::endl;
 
- 	int col = h & 3; // 3 это 11  
+ 	int col = h & 3; 
 	std::cout << "col is " << col <<  std::endl;
 
- 	h >>= 2; // смещаем вправо на 2 бита
+ 	h >>= 2; 
 
 // 
 	for (int i=0; i < 4; i++){
 		for (int j=0; j<4; j++){
-			int fig = h & 3; // 3 это 11  
+			int fig = h & 3; 
 
-			Scalar sc; // color
+			Scalar sc; 
  			h >>= 2; 
 
  			int col = h & 3; 
@@ -98,7 +113,11 @@ void generator(){
 					break;
 			}
 
-			std::cout << "color is " << col << "; fig is " << fig <<  std::endl;
+			// std::cout << "color is " << col << "; fig is " << fig <<  std::endl;
+
+
 		}
+
+	    return QImage((uchar*) image.data, image.cols, image.rows, image.step, QImage::Format_RGB888);
 
 	}
