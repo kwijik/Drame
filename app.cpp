@@ -1,7 +1,6 @@
 #include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <string>
 #include <functional>
@@ -14,7 +13,6 @@ void drawTriangle(Mat image, Point p1, Point p2, Point p3, Scalar sc, int width)
 	line( image, p2, p3, sc, width, 8 );
 }
 
-// gnome & kde
 
 //
 
@@ -24,7 +22,7 @@ int main(){
 
 	int size_pic = 400;
 
-	std::string test = "helloo";
+	std::string test = "tttt";
 
 	std::size_t h = std::hash <std::string>{}(test); // hash
 
@@ -36,16 +34,28 @@ int main(){
 
 
 
+	int fig = h & 3; // 3 это 11  
+	std::cout << "fig is " << fig <<  std::endl;
+
+ 	h >>= 2; // смещаем вправо на 2 бита
+	std::cout << "h is " << h <<  std::endl;
+
+ 	int col = h & 3; // 3 это 11  
+	std::cout << "col is " << col <<  std::endl;
+
+ 	h >>= 2; // смещаем вправо на 2 бита
+
 // 
 	for (int i=0; i < 4; i++){
 		for (int j=0; j<4; j++){
 			int fig = h & 3; // 3 это 11  
-			Scalar sc; // цвет
- 			h >>= 2; // смещаем вправо на 2 бита
 
- 			int col = h & 3; // 3 это 11  
+			Scalar sc; // color
+ 			h >>= 2; 
 
- 			h >>= 2; // смещаем вправо на 2 бита
+ 			int col = h & 3; 
+
+ 			h >>= 2; 
 
  			switch(col){
  				case 0: 
@@ -89,3 +99,4 @@ int main(){
 
 	return 0;
 }
+
