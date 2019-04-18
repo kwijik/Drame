@@ -42,4 +42,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv
+#INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv
+INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include/opencv4
+
+LIBS += -L/usr/local/Cellar/opencv/4.0.1/lib -lopencv_core -lopencv_highgui -lopencv_imgproc

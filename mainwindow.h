@@ -15,6 +15,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    // void on_pushButton_clicked();
+    void updateImage(const QString &str);
+
 private:
     Ui::MainWindow *ui;
 };
