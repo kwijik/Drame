@@ -106,6 +106,22 @@ MainWindow::~MainWindow()
 {
      delete ui;
 }
+
+
+void MainWindow::on_pushButton_clicked(){
+    std::cout << "button is clicked"  << std::endl;
+    QLineEdit* lineEdit = this->findChild<QLineEdit*>("lineEdit");
+
+    QString text = lineEdit->text();
+
+    //generator(str.toUtf8().constData()).save("/Users/denisbolshakov/Documents/cpp/DrawMe/test_image1.png");
+    generator(text.toUtf8().constData()).save("/Users/denisbolshakov/Documents/cpp/DrawMe/test_image1.png");
+
+    std::cout << "something is saved..."<< std::endl;
+
+}
+
+
 void MainWindow::updateImage(const QString &str)
 {
     std::cout << "string is: " << str.toUtf8().constData() << std::endl;
