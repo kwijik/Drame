@@ -26,7 +26,6 @@ QImage generator( std::string text){
 
     std::size_t h = std::hash <std::string>{}(text); 
 
-    std::cout << "h: " << h << std::endl;
 
     int img_size = 400;
 
@@ -35,13 +34,10 @@ QImage generator( std::string text){
 
 
     int fig = h & 3; 
-    std::cout << "fig is " << fig <<  std::endl;
 
     h >>= 2; 
-    std::cout << "h is " << h <<  std::endl;
 
     int col = h & 3; 
-    std::cout << "col is " << col <<  std::endl;
 
     h >>= 2; 
 
@@ -109,23 +105,18 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::on_pushButton_clicked(){
-    std::cout << "button is clicked"  << std::endl;
     QLineEdit* lineEdit = this->findChild<QLineEdit*>("lineEdit");
 
     QString text = lineEdit->text();
 
     QString file_name = QFileDialog::getSaveFileName(this, tr("Save file"), QDir::homePath(), ("Images (*.png *.xpm *.jpg)"));
 
-    std::cout << "filename is: " << file_name.toStdString() << std::endl;
 
     if(generator(text.toStdString()).save(file_name)){
-        QMessageBox::information(this, "Good news!", "File saved");
+        QMessageBox::information(this, "Good news!", "File saved.");
     } else {
-        QMessageBox::warning(this, "Error", "Some problem occured");
+        QMessageBox::warning(this, "Error", "Image was not saves.");
     }
-    std::cout << "text is: " << text.toStdString() << std::endl;
-
-    std::cout << "something is saved..."<< std::endl;
 
 }
 
@@ -133,7 +124,6 @@ void MainWindow::on_pushButton_clicked(){
 
 void MainWindow::updateImage(const QString &str)
 {
-    std::cout << "string is: " << str.toUtf8().constData() << std::endl;
 
     if (str.isEmpty()){
         ui->labelPic->clear();
@@ -142,12 +132,9 @@ void MainWindow::updateImage(const QString &str)
 
         int w = ui->labelPic->width();
         int h = ui->labelPic->height();
-        std::cout << "setPixmap goes here..." << std::endl;
 
         ui->labelPic->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
     }
-    std::cout << "update goes here..." << std::endl;
      QWidget::update();
     // QWidget::repaint();
-     std::cout << "after update goes here..." << std::endl;
 }
