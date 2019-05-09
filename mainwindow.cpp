@@ -114,12 +114,19 @@ void MainWindow::on_pushButton_clicked(){
 
     QString text = lineEdit->text();
 
-    //generator(str.toUtf8().constData()).save("/Users/denisbolshakov/Documents/cpp/DrawMe/test_image1.png");
-    generator(text.toUtf8().constData()).save("/Users/denisbolshakov/Documents/cpp/DrawMe/test_image1.png");
+    QString file_name = QFileDialog::getSaveFileName(this, tr("Save file"), QDir::homePath(), ("Images (*.png *.xpm *.jpg)"));
+
+    std::cout << "filename is: " << file_name.toStdString() << std::endl;
+
+    std::string str = "aaa.img";
+    generator(text.toStdString()).save(file_name);
+
+    std::cout << "text is: " << text.toStdString() << std::endl;
 
     std::cout << "something is saved..."<< std::endl;
 
 }
+
 
 
 void MainWindow::updateImage(const QString &str)
