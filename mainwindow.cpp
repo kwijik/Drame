@@ -118,9 +118,11 @@ void MainWindow::on_pushButton_clicked(){
 
     std::cout << "filename is: " << file_name.toStdString() << std::endl;
 
-    std::string str = "aaa.img";
-    generator(text.toStdString()).save(file_name);
-
+    if(generator(text.toStdString()).save(file_name)){
+        QMessageBox::information(this, "Good news!", "File saved");
+    } else {
+        QMessageBox::warning(this, "Error", "Some problem occured");
+    }
     std::cout << "text is: " << text.toStdString() << std::endl;
 
     std::cout << "something is saved..."<< std::endl;
