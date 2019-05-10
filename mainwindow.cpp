@@ -10,6 +10,9 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <string>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QDir>
 
 using namespace cv;
 
@@ -113,9 +116,9 @@ void MainWindow::on_pushButton_clicked(){
 
 
     if(generator(text.toStdString()).save(file_name)){
-        QMessageBox::information(this, "Good news!", "File saved.");
+        QMessageBox::information(this, "", "File saved.");
     } else {
-        QMessageBox::warning(this, "Error", "Image was not saves.");
+        QMessageBox::warning(this, "", "Image was not saves.");
     }
 
 }
@@ -136,5 +139,4 @@ void MainWindow::updateImage(const QString &str)
         ui->labelPic->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
     }
      QWidget::update();
-    // QWidget::repaint();
 }
