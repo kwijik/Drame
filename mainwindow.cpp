@@ -112,14 +112,18 @@ void MainWindow::on_pushButton_clicked(){
 
     QString text = lineEdit->text();
 
-    QString file_name = QFileDialog::getSaveFileName(this, tr("Save file"), QDir::homePath(), ("Images (*.png *.xpm *.jpg)"));
+    if(text.isEmpty()){
+        QMessageBox::information(this, "", "Nothing to save here!");
+    } else{
+        QString file_name = QFileDialog::getSaveFileName(this, tr("Save file"), QDir::homePath(), ("Images (*.png *.xpm *.jpg)"));
 
-
-    if(generator(text.toStdString()).save(file_name)){
-        QMessageBox::information(this, "", "File saved.");
-    } else {
-        QMessageBox::warning(this, "", "Image was not saves.");
+        if(generator(text.toStdString()).save(file_name)){
+            QMessageBox::information(this, "", "File saved.");
+        } else {
+            QMessageBox::warning(this, "", "Image was not saves.");
+        }
     }
+    
 
 }
 
