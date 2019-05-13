@@ -1,5 +1,5 @@
 # DRAME
-try to draw a chef-d'œuvre using strings :art:
+try to draw a chef-d'œuvre using usual string (chaîne de caractères) :art:
 
 ### How it works
 Type any string and it will generate an image
@@ -11,7 +11,7 @@ Type any string and it will generate an image
 
 
 ### Techno
-C++
-OpenCV for image routines
-QT a small UI 
+C++  
+OpenCV for image routines  
+QT a small UI   
 
