@@ -120,7 +120,7 @@ void MainWindow::on_pushButton_clicked(){
         if(generator(text.toStdString()).save(file_name)){
             QMessageBox::information(this, "", "File saved.");
         } else {
-            QMessageBox::warning(this, "", "Image was not saves.");
+            QMessageBox::warning(this, "", "Image was not saved.");
         }
     }
     
