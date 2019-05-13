@@ -13,5 +13,5 @@ Type any string and it will generate an image
 ### Technologies
 C++  
 OpenCV for image routines  
-QT a small UI   
+QT to create an UI   
 
