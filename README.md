@@ -10,7 +10,7 @@ Type any string and it will generate an image
 [![Watch the video](https://img.youtube.com/vi/hGvOX1pFYuk/hqdefault.jpg)](https://youtu.be/hGvOX1pFYuk)
 
 
-### Techno
+### Technologies
 C++  
 OpenCV for image routines  
 QT a small UI   
