@@ -1,5 +1,5 @@
 # DRAME
-try to draw a chef-d'œuvre using usual string (chaîne de caractères) :art:
+try to draw a chef-d'œuvre :art: using string (chaîne de caractères) 
 
 ### How it works
 Type any string and it will generate an image
