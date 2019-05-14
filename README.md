@@ -2,7 +2,7 @@
 try to draw a chef-d'œuvre :art: using string (chaîne de caractères) 
 
 ### How it works
-Type any string and it will generate an image
+Type a string and it will generate an image
 
 ### Video demonstrating functionality
 
@@ -12,6 +12,6 @@ Type any string and it will generate an image
 
 ### Technologies
 C++  
-OpenCV for image routines  
-QT to create an UI   
+OpenCV 
+QT 
 
