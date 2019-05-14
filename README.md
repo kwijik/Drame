@@ -12,6 +12,6 @@ Type a string and it will generate an image
 
 ### Technologies
 C++  
-OpenCV 
-QT 
+OpenCV  
+QT
 
